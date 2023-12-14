@@ -62,7 +62,7 @@ export default {
 
       // Redirect to the app when logged in
       response.redirect('/app')
-    } catch (error) {
+    } catch (error: any) {
       console.log(error) // eslint-disable-line
       // Redirect to the main page if something went wrong
       response.redirect('/')
@@ -94,7 +94,7 @@ export default {
       }
 
       response.status(200).send(data)
-    } catch (error) {
+    } catch (error: any) {
       response.status(400).send({ message: error.message })
     }
   },
@@ -112,7 +112,7 @@ async function firstTimeLoginCheck(username: string, accessToken: string): Promi
 
     // If repo already exists, we assume it's the takenote data repo and can move on
     return false
-  } catch (error) {
+  } catch (error: any) {
     // If repo doesn't exist, we'll try to create it
     return true
   }
@@ -134,7 +134,7 @@ async function createTakeNoteDataRepo(username: string, accessToken: string): Pr
   }
   try {
     await SDK(Method.POST, `/user/repos`, accessToken, takenoteDataRepo)
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error)
   }
 }
@@ -152,7 +152,7 @@ async function createInitialCommit(username: string, accessToken: string): Promi
       accessToken,
       noteCommit
     )
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error)
   }
 }

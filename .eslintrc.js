@@ -20,6 +20,12 @@ module.exports = {
   ],
   plugins: ['import'],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     // Separate import groups with newline by section
     'import/order': [
       'error',

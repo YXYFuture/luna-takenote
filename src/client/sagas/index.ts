@@ -32,8 +32,8 @@ function* loginUser() {
 
       yield put(loginSuccess(data))
     }
-  } catch (error) {
-    yield put(loginError(error.message))
+  } catch (error: any) {
+    yield put(loginError(error?.message))
   }
 }
 
@@ -47,14 +47,14 @@ function* logoutUser() {
     }
 
     yield put(logoutSuccess())
-  } catch (error) {
+  } catch (error: any) {
     yield put(logoutSuccess())
   }
 }
 
 // Get notes from API
-function* fetchNotes() {
-  let data
+function* fetchNotes(): any {
+  let data: any
   try {
     if (isDemo) {
       data = yield requestNotes()
@@ -64,13 +64,13 @@ function* fetchNotes() {
     const { notesSortKey } = yield select(getSettings)
 
     yield put(loadNotesSuccess({ notes: data, sortOrderKey: notesSortKey }))
-  } catch (error) {
-    yield put(loadNotesError(error.message))
+  } catch (error: any) {
+    yield put(loadNotesError(error?.message))
   }
 }
 
 // Get categories from API
-function* fetchCategories() {
+function* fetchCategories(): any {
   let data
   try {
     if (isDemo) {
@@ -78,21 +78,19 @@ function* fetchCategories() {
     } else {
       data = (yield axios('/api/sync/categories')).data
     }
-
     yield put(loadCategoriesSuccess(data))
-  } catch (error) {
-    yield put(loadCategoriesError(error.message))
+  } catch (error: any) {
+    yield put(loadCategoriesError(error?.message))
   }
 }
 
 // Get settings from API
-function* fetchSettings() {
+function* fetchSettings(): any {
   let data
   try {
     data = yield requestSettings()
-
     yield put(loadSettingsSuccess(data))
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadSettingsError())
   }
 }
@@ -105,17 +103,17 @@ function* syncData({ payload }: SyncAction) {
       yield axios.post('/api/sync', payload)
     }
     yield put(syncSuccess(dayjs().format()))
-  } catch (error) {
-    yield put(syncError(error.message))
+  } catch (error: any) {
+    yield put(syncError(error?.message))
   }
 }
 
-function* syncSettings() {
+function* syncSettings(): any {
   try {
-    const settings = yield select(getSettings)
+    const settings: any = yield select(getSettings)
 
     yield saveSettings(settings)
-  } catch (error) {}
+  } catch (error: any) {}
 }
 
 // If any of these functions are dispatched, invoke the appropriate saga

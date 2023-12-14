@@ -11,7 +11,7 @@ const getUser = async (request: Request, response: Response, next: NextFunction)
     response.locals.userData = data
 
     next()
-  } catch (error) {
+  } catch (error: any) {
     response.status(403).send({ message: 'Forbidden Resource', status: 403 })
   }
 }

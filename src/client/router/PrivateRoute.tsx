@@ -13,7 +13,7 @@ export const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component
 
   return (
     <Route
-      render={(props) =>
+      render={(props: any) =>
         isAuthenticated === true ? <Component {...props} /> : <Redirect to="/" />
       }
       {...rest}

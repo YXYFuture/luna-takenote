@@ -13,7 +13,7 @@ export const PublicRoute: React.FC<PublicRouteProps> = ({ component: Component, 
 
   return (
     <Route
-      render={(props) =>
+      render={(props: any) =>
         isAuthenticated === false ? <Component {...props} /> : <Redirect to="/app" />
       }
       {...rest}

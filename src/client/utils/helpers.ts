@@ -255,7 +255,7 @@ export const getDayJsLocale = (languagetoken: string): string => {
     require('dayjs/locale/' + languagetoken + '.js')
 
     return languagetoken
-  } catch (error) {
+  } catch (error: any) {
     if (languagetoken.includes('-'))
       return getDayJsLocale(languagetoken.substring(0, languagetoken.lastIndexOf('-')))
 

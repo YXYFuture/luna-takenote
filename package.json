@@ -2,9 +2,9 @@
   "name": "takenote",
   "version": "0.7.2",
   "description": "A web-based notes app for developers.",
-  "author": "Tania Rascia",
+  "author": "Yangxiaoyi",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "main": "src/server/index.ts",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -12,7 +12,7 @@
     "server": "nodemon --config config/nodemon.config.json",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "prod": "node -r ts-node/register/transpile-only src/server/index.ts",
-    "start": "npm run client",
+    "start": "npm run client ",
     "test": "jest --config config/jest.config.js",
     "test:e2e": "cypress run --config-file config/cypress.config.json",
     "test:e2e:open": "cypress open --config-file config/cypress.config.json",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taniarascia/takenote"
+    "url": "git+https://github.com/YXYFuture/luna-takenote"
   },
   "keywords": [
     "notes",
@@ -39,9 +39,9 @@
     "github"
   ],
   "bugs": {
-    "url": "https://github.com/taniarascia/takenote/issues"
+    "url": "https://github.com/YXYFuture/luna-takenote/issues"
   },
-  "homepage": "https://takenote.dev",
+  "homepage": "https://github.com/YXYFuture/luna-takenote",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -66,6 +66,7 @@
     "dayjs": "^1.9.3",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
+    "history": "^5.3.0",
     "jszip": "^3.5.0",
     "mousetrap": "^1.6.5",
     "mousetrap-global-bind": "^1.1.0",
@@ -137,15 +138,15 @@
     "eslint-plugin-react": "^7.21.4",
     "faker": "^5.1.0",
     "html-webpack-plugin": "^5.0.0-alpha.7",
-    "husky": "^4.3.0",
+    "husky": "^8.0.3",
     "image-webpack-loader": "^7.0.1",
     "jest": "^26.5.3",
     "jest-extended": "^0.11.5",
     "jest-raw-loader": "^1.0.1",
     "lint-staged": "^10.4.1",
     "mini-css-extract-plugin": "^1.0.0",
-    "node-sass": "^4.14.1",
     "nodemon": "^2.0.5",
+    "sass": "^1.69.5",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.4.1",
